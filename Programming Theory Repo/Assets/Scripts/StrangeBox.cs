@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StrangeBox : Box
-{
+{// INHERITANCE
     bool IsChanged = false;
 public override void Move()
-    {
+    {// POLYMORPHISM
         rb.AddRelativeForce(-Vector3.forward * speed,ForceMode.Acceleration);
         if (IsChanged == false)
         {
