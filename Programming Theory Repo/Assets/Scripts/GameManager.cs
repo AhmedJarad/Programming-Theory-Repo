@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+
+        }
         
     }
     void RandomInsObjects()
@@ -73,6 +78,14 @@ public class GameManager : MonoBehaviour
 
         
         }
+    }
+  public void LoadMainScene()
+    {
+        SceneManager.LoadScene("Main");
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
     private void OnTriggerExit(Collider other)
     {
