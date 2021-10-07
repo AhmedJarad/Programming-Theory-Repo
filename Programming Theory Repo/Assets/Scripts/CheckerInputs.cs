@@ -14,7 +14,7 @@ public class CheckerInputs : MonoBehaviour
     public float timer;
      float ORIGIN;
     float OriginalTimer
-    {
+    {// ENCAPSULATION
         get {return ORIGIN; }
         set {
      

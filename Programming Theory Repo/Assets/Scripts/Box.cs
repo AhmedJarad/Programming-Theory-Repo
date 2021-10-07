@@ -25,11 +25,11 @@ public class Box : MonoBehaviour
 
     }
     void RandomPosSpawner()
-    {
+    {// ABSTRACTION
         transform.position = RandomPos();
     }
     Vector3 RandomPos()
-    {
+    {// ABSTRACTION
         int randomNumber=  Random.Range(1, 4);
         Vector3 pos;
         switch (randomNumber)
@@ -67,7 +67,7 @@ public class Box : MonoBehaviour
   
     }
     void BoundDestroy()
-    {
+    {// ABSTRACTION
         if (transform.position.z < zBoundToDestroy)
         {
             Destroy(gameObject);

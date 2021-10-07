@@ -50,12 +50,12 @@ public class GameManager : MonoBehaviour
         }
     }
   public int RandomIntBetweenInc(int number1,int number2)
-    {
+    {// POLYMORPHISM
         return Random.Range(number1, number2+1);
      
     }
     public float RandomIntBetweenInc(float number1, float number2)
-    {
+    {// POLYMORPHISM
         return Random.Range(number1, number2);
 
     }
