@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {[HideInInspector]
-    public float speed =15;
+    public float speed =25;
     bool IsGoodBox;
     public int BoxValue;
     protected Rigidbody rb;

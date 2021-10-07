@@ -31,9 +31,13 @@ public class CheckerInputs : MonoBehaviour
     protected Rigidbody rb;
     public TextMeshProUGUI Score;
     public static int ScoreNum;
+    private AudioSource audioSource;
+    public AudioClip RightSoundClip, WrongSoundClip;
+    private static string RightWrong;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         OriginalTimer = timer;
     }
 
@@ -45,8 +49,10 @@ public class CheckerInputs : MonoBehaviour
         Inputs();
         TurnOn();
         Timer();
-  
-  
+
+
+
+
     }
     void Inputs()
     {
@@ -127,11 +133,15 @@ public class CheckerInputs : MonoBehaviour
                 GameObject BOX = other.gameObject;
                 if (BOX.name == "Red(Clone)" || BOX.name == "Orange(Clone)")
                 {
-                    ScoreNum -=BOX.GetComponent<Box>().BoxValue;              
+                    ScoreNum -=BOX.GetComponent<Box>().BoxValue;
+                    RightWrong = "Wrong";
+                    audioSource.PlayOneShot(WrongSoundClip);
                     Debug.Log("Wrong");
                 }
                 if (BOX.name == "Green(Clone)" || BOX.name == "Purple(Clone)")
                 {
+                    audioSource.PlayOneShot(RightSoundClip);
+                    RightWrong = "Right";
                     Debug.Log("Right");
                     ScoreNum += BOX.GetComponent<Box>().BoxValue;
                 }
@@ -142,8 +152,10 @@ public class CheckerInputs : MonoBehaviour
                 GameObject BOX = other.gameObject;
                 if (BOX.name == "Red(Clone)" || BOX.name == "Orange(Clone)")
                 {
+                    audioSource.PlayOneShot(RightSoundClip);
                     StartTimer = true;
                     rb = BOX.GetComponent<Rigidbody>();
+                    RightWrong = "Right";
                     Debug.Log("Right");
                         ScoreNum+= BOX.GetComponent<Box>().BoxValue;
           
@@ -151,7 +163,9 @@ public class CheckerInputs : MonoBehaviour
                 if (BOX.name == "Green(Clone)" || BOX.name == "Purple(Clone)")
                 {
                     StartTimer = true;
-                    rb = BOX.GetComponent<Rigidbody>();                                    
+                    rb = BOX.GetComponent<Rigidbody>();
+                    audioSource.PlayOneShot(WrongSoundClip);
+                    RightWrong = "Wrong";
                     Debug.Log("Wrong");
                      ScoreNum -= BOX.GetComponent<Box>().BoxValue;
 
